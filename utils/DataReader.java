@@ -18,7 +18,7 @@ public class DataReader
         sc.close();
     }
 
-    public book readAndCreateBook()
+    public Book readAndCreateBook()
     {
         System.out.println("Tytuł: ");
         String title = sc.nextLine();
@@ -35,6 +35,6 @@ public class DataReader
         int pages = sc.nextInt();
         sc.nextLine();
 
-        return new Book(title, author, releaseDate, pages, publisher, isbn)
+        return new Book(title, author, releaseDate, pages, publisher, isbn);
     }
 }

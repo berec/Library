@@ -1,30 +1,26 @@
 package app;
 
 import data.Book;
+import utils.DataReader;
 
 public class Library
 {
     public static void main(String[] args)
     {
-        final String appName ="Biblioteka v0.5";
+        final String appName ="Biblioteka v0.6";
 
         Book[] books = new Book[1000];
-
-        books[0] = new Book("W pustyni i w puszczy", "Henryk SIenkiewicz",
-                2010, 296, "Greg", "97898774647848");
-        books[1] = new Book("Java", "Jushua Beck", 2009, 352,
-                "Helion", "9988498473985");
-        books[2] = new Book("SCJP Java", "Bert Bates", 2008, 851,
-                "Osborne Media", "98374837646374");
-        books[3] = new Book("Photoshop", "Scott Kelby", 2012, 945,
-                "Helion", "47823492698376");
+        DataReader dataReader = new DataReader();
 
         System.out.println(appName);
-        System.out.println("Książki dostępne w bibliotece");
+        System.out.println("Wprowadź nową książkę: ");
+        books[0] = dataReader.readAndCreateBook();
+        books[1] = dataReader.readAndCreateBook();
+        dataReader.close();
+
+
         books[0].printInfo();
         books[1].printInfo();
-        books[2].printInfo();
-        books[3].printInfo();
         System.out.println("System może przechowywać do: " + books.length + " książek");
 
     }
