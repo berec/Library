@@ -1,27 +1,49 @@
-package app;
-
-import data.Book;
-import utils.DataReader;
+package data;
 
 public class Library
 {
-    public static void main(String[] args)
+
+    public final int maxBooks = 1000;
+    private Book[] books;
+    private int booksNumber;
+
+    public Library()
     {
-        final String appName ="Biblioteka v0.6";
-
-        Book[] books = new Book[1000];
-        DataReader dataReader = new DataReader();
-
-        System.out.println(appName);
-        System.out.println("Wprowadź nową książkę: ");
-        books[0] = dataReader.readAndCreateBook();
-        books[1] = dataReader.readAndCreateBook();
-        dataReader.close();
-
-
-        books[0].printInfo();
-        books[1].printInfo();
-        System.out.println("System może przechowywać do: " + books.length + " książek");
-
+        books = new Book[maxBooks]
     }
+
+    public int getBooksNumber()
+    {
+        return booksNumber;
+    }
+
+    public Book[] getBooks()
+    {
+        return books;
+    }
+
+    public void addBooks(Book book)
+    {
+        if (booksNumber < maxBooks)
+        {
+            books[booksNumber] = book;
+            booksNumber++;
+        } else
+        {
+            System.out.println("Maksymalna liczba książek została osiągnięta");
+        }
+    }
+
+    public void printBooks()
+    {
+        if (booksNumber == 0)
+        {
+            System.out.println("Brak książek w bibliotece");
+        }
+        for (int i = 0; i < booksNumber; i++)
+        {
+            books[i].printInfo();
+        }
+    }
+
 }
