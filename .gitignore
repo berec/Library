@@ -1,4 +1,5 @@
 .idea/
-app.Library.iml
+data.Library.iml
 out
 Library.iml
+.gitignore
