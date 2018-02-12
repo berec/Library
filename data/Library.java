@@ -30,16 +30,6 @@ public class Library {
         return books;
     }
 
-    public void addBook(Book book) {
-        if(booksNumber < maxBooks) {
-            books[booksNumber] = book;
-            booksNumber++;
-        } else {
-            System.out.println("Maxymalna liczba książek została osiągnięta");
-        }
-
-    }
-
     public void printBooks() {
         if(booksNumber == 0) {
             System.out.println("Brak książek w bibliotece");

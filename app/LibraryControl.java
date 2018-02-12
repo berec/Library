@@ -6,10 +6,15 @@ import data.Library;
 
 public class LibraryControl
 {
-    // zmienne do kontrolowania programu
+    // stałe
     public static final int EXIT = 0;
     public static final int ADD_BOOK = 1;
     public static final int PRINT_BOOKS = 2;
+
+
+    /*
+     * Główna pętla programu, która pozwala na wybór opcji i interakcję
+     */
 
     public void controlLoop()
     {
@@ -51,40 +56,6 @@ public class LibraryControl
     {
         dataReader = new DataReader();
         library = new Library();
-    }
-
-    /*
-     * Główna pętla programu, która pozwala na wybór opcji i interakcję
-     */
-    public void controlLoop()
-    {
-        int option;
-        printOptions();
-        while ((option = dataReader.getInt()) != EXIT)
-        {
-            switch (option)
-            {
-                case ADD_BOOK:
-                    addBook();
-                    break;
-                case PRINT_BOOKS:
-                    printBooks();
-                    break;
-                default:
-                    System.out.println("Nie ma takiej opcji, wprowadź ponownie: ");
-            }
-            printOptions();
-        }
-        // zamykamy strumień wejścia
-        dataReader.close();
-    }
-
-    private void printOptions()
-    {
-        System.out.println("Wybierz opcję: ");
-        System.out.println("0 - wyjście z programu");
-        System.out.println("1 - dodanie nowej książki");
-        System.out.println("2 - wyświetl dostępne książki");
     }
 
     private void addBook()
