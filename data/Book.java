@@ -2,20 +2,21 @@ package data;
 
 public class Book extends Publication
 {
+    // Pola
     private String author;
     private int pages;
     private String isbn;
 
-    public String getAuthor()
+    // settery i gettery
+    public String getIsbn()
     {
-        return author;
+        return isbn;
     }
 
-    public void setAuthor(String author)
+    public void setIsbn(String isbn)
     {
-        this.author = author;
+        this.isbn = isbn;
     }
-
 
     public int getPages()
     {
@@ -27,31 +28,32 @@ public class Book extends Publication
         this.pages = pages;
     }
 
-
-    public String getIsbn()
+    public String getAuthor()
     {
-        return isbn;
+        return author;
     }
 
-    public void setIsbn(String isbn)
+    public void setAuthor(String author)
     {
-        this.isbn = isbn;
+        this.author = author;
     }
 
-    public Book(String title, String author, int year, int pages, String publisher, String isbn)
+    // Konstruktory
+    public Book(String title, String author, int year, int pages, String publisher,
+                String isbn)
     {
-       this.setTitle(title);
-       this.setAuthor(author);
-       this.setYear(year);
-       this.setPages(pages);
-       this.setPublisher(publisher);
-       this.setIsbn();
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setYear(year);
+        this.setPages(pages);
+        this.setPublisher(publisher);
+        this.setIsbn(isbn);
     }
 
     public void printInfo()
     {
-        String info = getTitle() + "; " + getAuthor() + "; " + getYear() + "; " + getPages() + "; "
-                + getPublisher() + "; " + getIsbn();
+        String info = getTitle() + "; " + getAuthor() + "; " + getYear() + "; " + getPages()
+                + "; " + getPublisher() + "; " + getIsbn();
         System.out.println(info);
     }
 }

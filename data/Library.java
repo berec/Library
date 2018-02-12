@@ -26,12 +26,12 @@ public class Library {
 
     public Magazine[] getMagazines()
     {
-        return magazines
+        return magazines;
     }
 
     public Library() {
         books = new Book[MAX_BOOKS];
-        magazines = new Magazine[MAX_MAGAZINES]
+        magazines = new Magazine[MAX_MAGAZINES];
     }
 
     public void addBook(Book book)
@@ -51,7 +51,7 @@ public class Library {
         if(magazinesNumber < MAX_MAGAZINES)
         {
             magazines[magazinesNumber] = magazine;
-            magazinesNumber++
+            magazinesNumber++;
         } else
         {
             System.out.println("Maksymalna liczba magazynów została osiągnięta");

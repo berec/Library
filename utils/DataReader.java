@@ -64,7 +64,7 @@ public class DataReader
         int day = sc.nextInt();
         sc.nextLine();
 
-        return new Magazine(title, publisher, language, year, month, day)
+        return new Magazine(title, publisher, language, year, month, day);
     }
 
 }
