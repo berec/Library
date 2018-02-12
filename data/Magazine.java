@@ -54,3 +54,4 @@ public class Magazine extends Publication
         System.out.println(info);
     }
 }
+
