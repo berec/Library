@@ -24,17 +24,17 @@ public enum Option
     Option(int value, String description)
     {
         this.value = value;
-        this.description = desc;
+        this.description = description;
     }
 
     @Override
     public String toString()
     {
-        return value + " - " + description
+        return value + " - " + description;
     }
 
     public static Option createFromInt(int option)
     {
-        return Option.values()[option]
+        return Option.values()[option];
     }
 }
