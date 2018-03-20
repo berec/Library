@@ -1,5 +1,7 @@
 package app;
 
+import java.util.NoSuchElementException;
+
 public enum Option
 {
     EXIT(0, "Wyjście z programu"),
@@ -21,10 +23,10 @@ public enum Option
         return description;
     }
 
-    Option(int value, String description)
+    Option(int value, String desc)
     {
         this.value = value;
-        this.description = description;
+        this.description = desc;
     }
 
     @Override
@@ -33,8 +35,16 @@ public enum Option
         return value + " - " + description;
     }
 
-    public static Option createFromInt(int option)
+    public static Option createFromInt(int option) throws NoSuchElementException
     {
-        return Option.values()[option];
+        Option result = null;
+        try
+        {
+            result = Option.values()[option];
+        } catch (ArrayIndexOutOfBoundsException e)
+        {
+            throw new NoSuchElementException("Brak elementu o wskazanym ID");
+        }
+        return result;
     }
 }
