@@ -34,7 +34,7 @@ public class Library
 
     private void addPublication(Publication pub) throws ArrayIndexOutOfBoundsException
     {
-        if (publicationsNumber < MAX_PUBLICATIONS)
+        if (publicationsNumber == MAX_PUBLICATIONS)
         {
             throw new ArrayIndexOutOfBoundsException("MAX_PUBLICATIONS " + MAX_PUBLICATIONS);
         }
