@@ -9,16 +9,14 @@ import data.Magazine;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
-public class LibraryControl
-{
+public class LibraryControl {
     // zmienna do komunikacji z użytkownikiem
     private DataReader dataReader;
 
     // "biblioteka" przechowująca dane
     private Library library;
 
-    public LibraryControl()
-    {
+    public LibraryControl() {
         dataReader = new DataReader();
         library = new Library();
     }
@@ -26,17 +24,13 @@ public class LibraryControl
     /*
      * Główna pętla programu, która pozwala na wybór opcji i interakcję
      */
-    public void controlLoop()
-    {
+    public void controlLoop() {
         Option option = null;
-        while (option != Option.EXIT)
-        {
-            try
-            {
+        while (option != Option.EXIT) {
+            try {
                 printOptions();
                 option = Option.createFromInt(dataReader.getInt());
-                switch (option)
-                {
+                switch (option) {
                     case ADD_BOOK:
                         addBook();
                         break;
@@ -53,45 +47,68 @@ public class LibraryControl
                         ;
                 }
 
-            } catch (InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 System.out.println("Wprowadzono niepoprawne dane, publikacji nie dodano");
-            } catch (NumberFormatException | NoSuchElementException e)
-            {
+            } catch (NumberFormatException | NoSuchElementException e) {
                 System.out.println("Wybrana opcja nie istnieje, wybierz ponownie: ");
             }
         }
         dataReader.close();
     }
 
-    private void printOptions()
-    {
+    private void printOptions() {
         System.out.println("Wybierz opcję: ");
-        for (Option o : Option.values())
-        {
+        for (Option o : Option.values()) {
             System.out.println(o);
         }
     }
 
-    private void addBook()
-    {
+    private void addBook() {
         Book book = dataReader.readAndCreateBook();
         library.addBook(book);
     }
 
-    private void printBooks()
-    {
+    private void printBooks() {
         LibraryUtils.printBooks(library);
     }
 
-    private void addMagazine()
-    {
+    private void addMagazine() {
         Magazine magazine = dataReader.readAndCreatemagazine();
         library.addMagazine(magazine);
     }
 
-    private void printMagazines()
-    {
+    private void printMagazines() {
         LibraryUtils.printMagazines(library);
+    }
+
+    private enum Option {
+        EXIT(0, "Wyjście z programu"),
+        ADD_BOOK(1, "Dodanie książki"),
+        ADD_MAGAZINE(2, "Dodanie magazynu/gazety"),
+        PRINT_BOOKS(3, "Wyświetlenie dostępnych książek"),
+        PRINT_MAGAZINES(4, "Wyświetlenie dostępnych magazynów/gazet");
+
+        private int value;
+        private String description;
+
+        Option(int value, String desc) {
+            this.value = value;
+            this.description = desc;
+        }
+
+        @Override
+        public String toString() {
+            return value + " - " + description;
+        }
+
+        public static Option createFromInt(int option) throws NoSuchElementException {
+            Option result = null;
+            try {
+                result = Option.values()[option];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new NoSuchElementException("Brak elementu o wskazanym ID");
+            }
+            return result;
+        }
     }
 }
